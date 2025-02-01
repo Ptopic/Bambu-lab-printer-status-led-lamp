@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const WebSocket = require('ws');
 const {
+	breatheEffectWarning,
 	breatheEffectError,
 	setXLedsOn,
 	finishedPrinting,
@@ -155,6 +156,18 @@ ws.on('message', async (data) => {
 					// Trigger finished led effect
 					try {
 						await finishedPrinting();
+					} catch (error) {
+						console.error('Error setting WLED state:', error);
+					}
+				} else if (message.event.data.new_state.state === 'pause') {
+					try {
+						await breatheEffectWarning();
+					} catch (error) {
+						console.error('Error setting WLED state:', error);
+					}
+				} else if (message.event.data.new_state.state === 'error') {
+					try {
+						await breatheEffectError();
 					} catch (error) {
 						console.error('Error setting WLED state:', error);
 					}
