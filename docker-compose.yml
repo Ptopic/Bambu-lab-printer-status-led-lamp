@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  wled-bambu-status:
+    container_name: 3d-printer-lamp
+    image: node:20
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    command: ['npm', 'run', 'start']
