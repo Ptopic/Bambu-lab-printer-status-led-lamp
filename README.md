@@ -8,7 +8,7 @@ Show bambu lab a1 mini 3d printer status on a status bar made of leds
 - Warnings
 - Finished
 
-### Build image for portainer
+### Build image for portainer (needs Dockerfile)
 
 ```
 docker build -t bambu-wled-api .
