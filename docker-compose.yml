@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   wled-bambu-status:
     container_name: 3d-printer-lamp
