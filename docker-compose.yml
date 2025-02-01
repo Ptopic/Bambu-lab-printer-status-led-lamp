@@ -1,15 +1,11 @@
 services:
-  wled-bambu-status:
-    container_name: wled-bambu-status
-    image: node:20
-    restart: unless-stopped
-    working_dir: /app
-    volumes:
-      - /data/compose/11/Bambu-lab-printer-status-led-lamp:/app
+  babambu-wled-api:
+    image: <your-dockerhub-username>/bambu-wled-api:latest
+    ports:
+      - '3000:3000'
+    restart: always
     environment:
       - HASS_URL=${HASS_URL}
       - HASS_TOKEN=${HASS_TOKEN}
       - WLED_URL=${WLED_URL}
       - EVENT_PRINTER_SERIAL_NUMBER=${EVENT_PRINTER_SERIAL_NUMBER}
-    command: ['npm', 'install']
-    entrypoint: ['npm', 'run', 'start']
