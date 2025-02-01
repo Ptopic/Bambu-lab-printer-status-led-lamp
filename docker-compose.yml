@@ -5,10 +5,11 @@ services:
     restart: unless-stopped
     working_dir: /app
     volumes:
-      - .:/app
+      - /data/compose/11/Bambu-lab-printer-status-led-lamp:/app
     environment:
       - HASS_URL=${HASS_URL}
       - HASS_TOKEN=${HASS_TOKEN}
       - WLED_URL=${WLED_URL}
       - EVENT_PRINTER_SERIAL_NUMBER=${EVENT_PRINTER_SERIAL_NUMBER}
-    command: ['npm', 'run', 'start']
+    command: ['npm', 'install']
+    entrypoint: ['npm', 'run', 'start']
